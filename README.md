@@ -20,6 +20,7 @@ yarn install
 </br>
 <h3 style="font-family='Helvetica'; font-size=15px; font-weight=bold; color=grey;">👊 How to use it</h3>
 <h4>For NEXT-JS/REACT</h4>
+
 <p>Just change variables from <b>index.js</b></p>
 <p>You will probably have to adapt your attribute for Hits & Filters but that's (h)it (sorry I'm 58 y.o)</p>
 </br>
