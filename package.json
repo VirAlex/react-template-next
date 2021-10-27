@@ -4,14 +4,25 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build && npm run export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-instantsearch-dom": "^6.12.0",
+    "algoliasearch": "^4.11.0",
+    "framer-motion": "^5.0.0",
+    "jotai": "^1.4.2",
     "next": "12.0.1",
+    "next-videos": "^1.4.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-instantsearch-dom": "^6.14.0",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.4.0",
+    "sass": "^1.43.4",
+    "search-insights": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "16.11.6",

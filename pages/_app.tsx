@@ -1,8 +1,35 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../assets/SCSS/index.scss";
+import { AppLayout } from "@/layouts/app-layout";
+import type { AppProps } from "next/app";
+
+//REACT REDUX CONFIF
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "@/reducers/indexReducer";
+import { Provider } from "react-redux";
+
+// DEV TOOL
+
+// if (typeof window !== "undefined") {
+//   // browser code
+//   const composeEnhancers =
+//     (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+//   //CREATE STORE +IMPORT ALL REDUCER IN ONE
+//   const store = createStore(
+//     rootReducer,
+//     composeEnhancers(applyMiddleware(thunk))
+//   );
+// }
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <Provider store={store}>
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
+    </Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;
