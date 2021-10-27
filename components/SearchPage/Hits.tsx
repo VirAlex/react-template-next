@@ -88,7 +88,7 @@ const HitsModal = ({ hits }: HitsModalProps) => {
             }}
           >
             <div className="image-wrapper">
-              <Image src={hit.image_link} alt="" />
+              <Image src={hit.image_link} width={1024} height={1024} alt="" />
             </div>
             <div className="infos">
               <h3>
