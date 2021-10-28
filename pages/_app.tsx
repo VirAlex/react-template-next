@@ -3,7 +3,7 @@ import { AppLayout } from "@/layouts/app-layout";
 import type { AppProps } from "next/app";
 
 //REACT REDUX CONFIF
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "@/reducers/indexReducer";
 import { Provider } from "react-redux";
