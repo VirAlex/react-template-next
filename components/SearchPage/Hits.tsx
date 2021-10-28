@@ -120,7 +120,7 @@ const ModalProduct = () => {
           }}
         >
           <motion.div className="modal-wrapper fadeModal">
-            <ProductDetails />
+            {/* <ProductDetails /> */}
           </motion.div>
         </div>
       ) : (
