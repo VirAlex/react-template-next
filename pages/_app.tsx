@@ -1,7 +1,7 @@
 import "../assets/SCSS/index.scss";
 import { AppLayout } from "@/layouts/app-layout";
 import type { AppProps } from "next/app";
-
+import { VisibilityProvider } from "@/contexts/visibilityContext";
 
 // if (typeof window !== "undefined") {
 //   // browser code
@@ -16,9 +16,11 @@ import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AppLayout>
-      <Component {...pageProps} />
-    </AppLayout>
+    <VisibilityProvider>
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
+    </VisibilityProvider>
   );
 }
 

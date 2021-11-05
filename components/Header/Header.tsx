@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { VisibilityContext } from "@/contexts/visibilityContext";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,7 @@ import {
 import { getQuery } from "../../actions/getQuery";
 
 const Header = () => {
+  const [searchVisible, setSearchVisible] = useContext(VisibilityContext);
   // useEffect(() => {
   //   if (federatedSearchVisibleSelector) {
   //     document.body.classList.add("stop-scrolling");
@@ -70,6 +72,7 @@ const Header = () => {
             // }
           }}
         >
+          <p>coucou {searchVisible}</p>
           <CustomSearchBox />
         </div>
       </div>
