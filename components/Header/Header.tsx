@@ -72,7 +72,7 @@ const Header = () => {
 
           <ul>
             <li>
-              <Link href="/cat_one">
+              <Link style={{ textDecoration: 'none' }} href="/cat_one">
                 <a>CAT ONE</a>
               </Link>
             </li>
