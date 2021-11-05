@@ -10,6 +10,10 @@ import footer from "@/public/static/images/footer.png";
 // Import components
 import CarouselHome from "@/components/Carousels/Home";
 
+// Import Jotai
+import { atom, useAtom } from 'jotai'
+
+
 const Home: NextPage = () => {
   return (
     <div>

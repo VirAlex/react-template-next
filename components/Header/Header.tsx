@@ -3,19 +3,28 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Use Jotai for state management
+import { atom, useAtom } from "jotai";
+
 // COMPONENT IMPORT
 import logo from "@/public/static/images/logo.jpeg";
 import CustomSearchBox from "./SearchBox";
 import SelectPersona from "@/components/Header/Personna";
-import {
-  searchVisible,
-  federatedSearchVisible,
-  catOne,
-  catTwo,
-} from "../../actions/visibility";
-import { getQuery } from "../../actions/getQuery";
+// import {
+//   searchVisible,
+//   federatedSearchVisible,
+//   catOne,
+//   catTwo,
+// } from "../../actions/visibility";
+// import { getQuery } from "../../actions/getQuery";
+const searchVisibleAtom = atom(false);
+const federatedSearchVisibleAtom = atom(false);
 
 const Header = () => {
+  const [searchVisible, setSearchVisible] = useAtom(searchVisibleAtom);
+  const [federatedSearchVisible, setFederatedSearchVisible] = useAtom(
+    federatedSearchVisibleAtom
+  );
   // useEffect(() => {
   //   if (federatedSearchVisibleSelector) {
   //     document.body.classList.add("stop-scrolling");
@@ -35,7 +44,10 @@ const Header = () => {
                 className="logo"
                 width={"100%"}
                 height={"100%"}
-                onClick={() => {}}
+                onClick={() => {
+                  setSearchVisible(false);
+                  setFederatedSearchVisible(false);
+                }}
               />
             </a>
           </Link>
@@ -62,6 +74,7 @@ const Header = () => {
         <div
           className="search-wrapper"
           onClick={(e) => {
+            setSearchVisible(true);
             // if (homepageSelector || catOneSelector || catTwoSelector) {
             //   dispatch(federatedSearchVisible(true));
             // }

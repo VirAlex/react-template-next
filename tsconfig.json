@@ -32,7 +32,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "contexts/visibilityContext.js"  ],
   "exclude": [
     "node_modules"
   ]
