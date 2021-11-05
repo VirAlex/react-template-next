@@ -18,9 +18,7 @@ type SearchBoxProps = {
 };
 
 const SearchBox = ({ refine }: SearchBoxProps) => {
-  const dispatch = useDispatch();
-  const { query, input } = useSelector((state: RootStateOrAny) => state.getQuery);
-  const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;;
+  const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
   return (
     <div className="searchBox-wrapper">
       <form
@@ -28,9 +26,6 @@ const SearchBox = ({ refine }: SearchBoxProps) => {
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(federatedSearchVisible(false));
-          dispatch(searchVisible(true));
-          dispatch(getQuery(query));
         }}
         autoComplete="off"
       >
@@ -38,9 +33,8 @@ const SearchBox = ({ refine }: SearchBoxProps) => {
           id="input-search2"
           ref={inputRef}
           type="search"
-          value={query}
+          // value={}
           onChange={(event) => {
-            dispatch(getQuery(event.currentTarget.value));
             refine(event.currentTarget.value);
           }}
           placeholder="Search..."

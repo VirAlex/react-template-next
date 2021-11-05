@@ -1,5 +1,4 @@
 import React from "react";
-import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 
 import { Highlight, connectHits } from "react-instantsearch-dom";
 import { showModalPDP, productDetail } from "@/actions/productDetail";
@@ -20,7 +19,6 @@ type HitsModalProps = {
 // MAIN SEARCH RESULT PAGE + FEDERATED
 const Hits = ({ hits }: HitsProps) => {
   console.log(typeof hits);
-  const dispatch = useDispatch();
   const listItem = {
     hidden: { opacity: 0, y: 100 },
     show: {
@@ -43,12 +41,7 @@ const Hits = ({ hits }: HitsProps) => {
                 initial="hidden"
                 animate="show"
                 className="hit-list"
-                onClick={() => {
-                  dispatch(productDetail(hit));
-                  dispatch(showModalPDP(true));
-                  dispatch(federatedSearchVisible(false));
-                  dispatch(searchVisible(true));
-                }}
+                onClick={() => {}}
               >
                 <div className="image-wrapper">
                   <Image src={hit.image_link} alt="" />
@@ -71,22 +64,11 @@ const Hits = ({ hits }: HitsProps) => {
 
 // PDP
 const HitsModal = ({ hits }: HitsModalProps) => {
-  const dispatch = useDispatch();
-
   return (
     <div className="hits-wrapper">
       <ul className="hits-list hits-list-modal">
         {hits.map((hit) => (
-          <li
-            key={hit.objectID}
-            className="hit-list"
-            onClick={() => {
-              dispatch(productDetail(hit));
-              dispatch(showModalPDP(true));
-              dispatch(federatedSearchVisible(false));
-              dispatch(searchVisible(true));
-            }}
-          >
+          <li key={hit.objectID} className="hit-list" onClick={() => {}}>
             <div className="image-wrapper">
               <Image src={hit.image_link} width={1024} height={1024} alt="" />
             </div>

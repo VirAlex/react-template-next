@@ -1,7 +1,6 @@
 import React from "react";
 
 import Select from "react-select";
-import { useDispatch } from "react-redux";
 import { selectPersona } from "@/actions/selectPersona";
 
 const SelectPersona = () => {
@@ -63,10 +62,9 @@ const SelectPersona = () => {
       };
     },
   };
-  const dispatch = useDispatch();
 
   const selectValue = (e: any) => {
-    dispatch(selectPersona(e.value as string));
+    // dispatch(selectPersona(e.value as string));
   };
 
   return (
