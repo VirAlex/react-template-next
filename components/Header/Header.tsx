@@ -25,7 +25,7 @@ const Header = () => {
   //   });
   // };
 
-  const { federatedSearchVisible, onChangeFederated } = useVisibility();
+  const { setfederatedSearchVisible } = useVisibility();
 
   // useEffect(() => {
   //   if (federatedSearchVisibleSelector) {
@@ -74,13 +74,11 @@ const Header = () => {
         </div>
         <div
           className="search-wrapper"
-          onClick={(e) => {
-            console.log(e);
-            onChangeFederated();
-            // displayFederated(!state.federatedSearchVisible);
+          onClick={() => {
+            setfederatedSearchVisible(true);
+         
           }}
         >
-          {/* {state.federatedSearchVisible ? <p>coucou </p> : <p>toto</p>} */}
           <CustomSearchBox />
         </div>
       </div>

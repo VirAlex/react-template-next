@@ -44,7 +44,7 @@ const Hits = ({ hits }: HitsProps) => {
                 onClick={() => {}}
               >
                 <div className="image-wrapper">
-                  <Image src={hit.image_link} alt="" width={'100%'} height={'100%'} />
+                  <Image src={hit.image_link} alt="" width={1024} height={1024} />
                 </div>
                 <div className="infos">
                   <h3>

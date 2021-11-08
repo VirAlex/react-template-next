@@ -1,6 +1,6 @@
 import React, { useState, useReducer, createContext, useContext} from "react";
 
-export const VisibilityContext = createContext();
+// export const VisibilityContext = createContext();
 
 // // Initiate state
 // const initialState = {
@@ -69,6 +69,7 @@ function useProvideVisibility(){
   }
 
   return {
+    setfederatedSearchVisible,
     federatedSearchVisible,
     onChangeFederated
   }

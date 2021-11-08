@@ -3,6 +3,8 @@ import React from "react";
 // Import variables
 import { querySuggestionsIndexName } from "@/utils/env";
 
+import {useVisibility} from '../../contexts/visibilityContext'
+
 // ALGOLIA IMPORT
 import {
   Configure,
@@ -12,7 +14,8 @@ import {
 } from "react-instantsearch-dom";
 
 // COMPONENT IMPORT
-import { CustomHits } from "@/components/Searchpage/Hits";
+import { CustomHits } from "../SearchPage/Hits";
+import CustomSuggestions from "./Suggestions"
 // import CustomSuggestions from "../Searchpage/Suggestions";
 // import CarouselHome from "../Homepage/Carousel";
 // import { federatedSearchVisible, searchVisible } from '../../actions/visibility';
@@ -24,9 +27,8 @@ const FederatedSearch = () => {
     <div className="federatedSearch">
       <div className="federatedSearch-wrapper">
         <div className="federatedSearch-recentSearches">
-          {/* <RecentSearches /> */}
+          <RecentSearches />
           {/* <ContentInjected /> */}
-          <h1>COUCOU FEDERATED</h1>
         </div>
 
         <div className="federatedSearch-products">
@@ -41,12 +43,12 @@ const FederatedSearch = () => {
           {/* </Results> */}
         </div>
         <div className="federatedSearch-suggestions">
-          {/* <ResultsTitle></ResultsTitle>
+          {/* <ResultsTitle> */}
             <h3>Suggestions</h3>
-          </ResultsTitle> */}
+          {/* </ResultsTitle> */}
           <Index indexName={querySuggestionsIndexName} indexId="suggestions">
-            {/* <Configure hitsPerPage={6} userToken={persona} /> */}
-            {/* <CustomSuggestions /> */}
+            <Configure hitsPerPage={6} userToken={'persona'} />
+            <CustomSuggestions />
           </Index>
         </div>
       </div>
@@ -54,29 +56,31 @@ const FederatedSearch = () => {
   );
 };
 
-// const RecentSearches = () => {
-//   const dispatch = useDispatch()
-//   const getSearches = localStorage.getItem("recentSearches");
-//   const cleanSearches = JSON.parse(getSearches);
-//   if (cleanSearches) {
-//     return (
-//       <>
-//         <h3 className="federated-title">Recent Searches</h3>
-//         <div className="federatedSearch-recentSearches_items">
-//           {cleanSearches.map((search, index) => {
-//             return <p   onClick={e => {
-//                 dispatch(getQuery(search));
-//                 dispatch(searchVisible(true));
-//                 dispatch(federatedSearchVisible(false));
-//             }} key={index}>{search}</p>;
-//           })}
-//         </div>
-//       </>
-//     );
-//   } else {
-//     return "";
-//   }
-// };
+const RecentSearches :Function = () => {
+
+  const {setfederatedSearchVisible} = useVisibility()
+  const getSearches :any = localStorage.getItem("recentSearches");
+  const cleanSearches = JSON.parse(getSearches);
+  if (cleanSearches) {
+    return (
+      <>
+        <h3 className="federated-title">Recent Searches</h3>
+        <div className="federatedSearch-recentSearches_items">
+          {cleanSearches.map((search :string, index: number) => {
+            return <p   onClick={e => {
+                // dispatch(getQuery(search));
+                // dispatch(searchVisible(true));
+                // dispatch(federatedSearchVisible(false));
+                setfederatedSearchVisible(false)
+            }} key={index}>{search}</p>;
+          })}
+        </div>
+      </>
+    );
+  } else {
+    return "";
+  }
+};
 
 // const InjectedContent = ({ items }) => {
 //   return (

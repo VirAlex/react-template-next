@@ -16,7 +16,7 @@ import { useVisibility } from "contexts/visibilityContext";
 
 const Home: NextPage = () => {
   const { federatedSearchVisible } = useVisibility();
-  console.log(federatedSearchVisible);
+
   return (
     <div>
       <div>
