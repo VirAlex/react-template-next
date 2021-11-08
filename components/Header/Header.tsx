@@ -1,5 +1,6 @@
-import React, { useEffect, useContext } from "react";
-import { VisibilityContext } from "@/contexts/visibilityContext";
+import React from "react";
+import { useVisibility } from "@/contexts/visibilityContext";
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -8,16 +9,28 @@ import Link from "next/link";
 import logo from "@/public/static/images/logo.jpeg";
 import CustomSearchBox from "./SearchBox";
 import SelectPersona from "@/components/Header/Personna";
-import {
-  searchVisible,
-  federatedSearchVisible,
-  catOne,
-  catTwo,
-} from "../../actions/visibility";
-import { getQuery } from "../../actions/getQuery";
 
 const Header = () => {
-  const [searchVisible, setSearchVisible] = useContext(VisibilityContext);
+  // const [state, dispatch] = useContext(VisibilityContext);
+
+  // const displayFederated = (value: boolean) => {
+  //   dispatch({
+  //     type: "CHANGE_FEDERATED",
+  //     payload: value,
+  //   });
+  // };
+
+  // const resetStates = () => {
+  //   dispatch({
+  //     type: "RESET_ALL_STATES",
+  //   });
+  // };
+
+  const {federatedSearchVisible, onChangeFederated}  = useVisibility()
+ 
+
+  
+
   // useEffect(() => {
   //   if (federatedSearchVisibleSelector) {
   //     document.body.classList.add("stop-scrolling");
@@ -37,14 +50,16 @@ const Header = () => {
                 className="logo"
                 width={"100%"}
                 height={"100%"}
-                onClick={() => {}}
+                onClick={() => {
+                  // resetStates();
+                }}
               />
             </a>
           </Link>
 
           <ul>
             <li>
-              <Link style={{ textDecoration: "none" }} href="/cat_one">
+              <Link href="/cat_one">
                 <a>CAT ONE</a>
               </Link>
             </li>
@@ -64,15 +79,11 @@ const Header = () => {
         <div
           className="search-wrapper"
           onClick={(e) => {
-            // if (homepageSelector || catOneSelector || catTwoSelector) {
-            //   dispatch(federatedSearchVisible(true));
-            // }
-            // if (searchVisibleSelector) {
-            //   dispatch(federatedSearchVisible(false));
-            // }
+            console.log(e)
+            // displayFederated(!state.federatedSearchVisible);
           }}
         >
-          <p>coucou {searchVisible}</p>
+          {/* {state.federatedSearchVisible ? <p>coucou </p> : <p>toto</p>} */}
           <CustomSearchBox />
         </div>
       </div>
