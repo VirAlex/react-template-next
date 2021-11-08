@@ -44,7 +44,7 @@ const Hits = ({ hits }: HitsProps) => {
                 onClick={() => {}}
               >
                 <div className="image-wrapper">
-                  <Image src={hit.image_link} alt="" />
+                  <Image src={hit.image_link} alt="" width={'100%'} height={'100%'} />
                 </div>
                 <div className="infos">
                   <h3>
@@ -86,13 +86,13 @@ const HitsModal = ({ hits }: HitsModalProps) => {
 };
 
 const ModalProduct = () => {
-  const dispatch = useDispatch();
-  const { showModal } = useSelector(
-    (state: RootStateOrAny) => state.productDetail
-  );
+  // const dispatch = useDispatch();
+  // const { showModal } = useSelector(
+  //   (state: RootStateOrAny) => state.productDetail
+  // );
   return (
     <div>
-      {showModal ? (
+      {/* {showModal ? (
         <div
           className="modal-bg"
           onClick={(e) => {
@@ -101,13 +101,13 @@ const ModalProduct = () => {
             }
           }}
         >
-          <motion.div className="modal-wrapper fadeModal">
+          <motion.div className="modal-wrapper fadeModal"> */}
             {/* <ProductDetails /> */}
-          </motion.div>
+          {/* </motion.div>
         </div>
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };

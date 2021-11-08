@@ -1,7 +1,6 @@
 import React from "react";
 import { useVisibility } from "@/contexts/visibilityContext";
 
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,10 +25,7 @@ const Header = () => {
   //   });
   // };
 
-  const {federatedSearchVisible, onChangeFederated}  = useVisibility()
- 
-
-  
+  const { federatedSearchVisible, onChangeFederated } = useVisibility();
 
   // useEffect(() => {
   //   if (federatedSearchVisibleSelector) {
@@ -79,7 +75,8 @@ const Header = () => {
         <div
           className="search-wrapper"
           onClick={(e) => {
-            console.log(e)
+            console.log(e);
+            onChangeFederated();
             // displayFederated(!state.federatedSearchVisible);
           }}
         >

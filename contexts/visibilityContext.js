@@ -65,7 +65,6 @@ function useProvideVisibility(){
 
 
   const onChangeFederated = (e) => {
-    console.log(e)
     setfederatedSearchVisible(true)
   }
 
