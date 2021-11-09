@@ -9,8 +9,14 @@ import img4 from "@/public/static/images/img4.png";
 import footer from "@/public/static/images/footer.png";
 // Import components
 import CarouselHome from "@/components/Carousels/Home";
+import FederatedSearch from "@/components/Federated Search/FederatedSearch";
+
+// Contexts API
+import { useVisibility } from "contexts/visibilityContext";
 
 const Home: NextPage = () => {
+  const { federatedSearchVisible } = useVisibility();
+
   return (
     <div>
       <div>
@@ -39,6 +45,7 @@ const Home: NextPage = () => {
       <div>
         <Image src={footer} alt="home" />
       </div>
+      <div className="container-federated">{federatedSearchVisible && <FederatedSearch />}</div>
     </div>
   );
 };

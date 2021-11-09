@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 
 // ALGOLIA'S IMPORT
@@ -13,12 +13,19 @@ import {
   federatedSearchVisible,
 } from "../../actions/visibility";
 
+
+import {useQuery} from '../../contexts/queryContext'
+
 type SearchBoxProps = {
   refine: any;
 };
 
 const SearchBox = ({ refine }: SearchBoxProps) => {
-  const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  // const inputRef = React.useRef() as React.MutableRefObject<HTMLInputElement>;
+  // const [query, setQuery] = useState('')
+  const {getQuery, setGetQuery} = useQuery()
+
+
   return (
     <div className="searchBox-wrapper">
       <form
@@ -26,16 +33,20 @@ const SearchBox = ({ refine }: SearchBoxProps) => {
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
+        
+          StoreQueryToLocalStorage(getQuery)
+          // localStorage.setItem("recentSearches");
         }}
         autoComplete="off"
       >
         <input
           id="input-search2"
-          ref={inputRef}
+          // ref={inputRef}
           type="search"
           // value={}
           onChange={(event) => {
             refine(event.currentTarget.value);
+            setGetQuery(event.currentTarget.value)
           }}
           placeholder="Search..."
           autoFocus={true}
@@ -61,5 +72,15 @@ const SearchBox = ({ refine }: SearchBoxProps) => {
 };
 
 const CustomSearchBox = connectSearchBox(SearchBox);
+
+const StoreQueryToLocalStorage = (query :string) => {
+  const oldSearchArray = localStorage.getItem('recentSearches');
+  const parsedArray = oldSearchArray ? JSON.parse(oldSearchArray) : [];
+  const allSearches = [...parsedArray, query];
+  const cleanArray = allSearches.filter(n => n);
+  // let deduplicateSearches = [...new Set(cleanArray)];
+  let deduplicateSearches = Array.from(cleanArray);
+  localStorage.setItem('recentSearches', JSON.stringify(deduplicateSearches));
+};
 
 export default CustomSearchBox;

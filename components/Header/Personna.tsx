@@ -9,33 +9,33 @@ const SelectPersona = () => {
     { value: "RB_Ben", label: "Ben" },
     { value: "Neutral", label: "Neutral" },
   ];
-  const colourStyles = {
-    control: (styles) => ({
+  const colourStyles: any = {
+    control: () => ({
       backgroundColor: "transparent",
       display: "flex",
       width: "100%",
       position: "relative",
     }),
-    placeholder: (styles) => ({
+    placeholder: () => ({
       backgroundColor: "transparent",
       fontSize: "1rem",
       color: "black",
       fontFamily: "Oswald",
       textTransform: "uppercase",
     }),
-    input: (styles) => ({ width: "100%" }),
-    container: (styles) => ({ width: "100%" }),
-    valueContainer: (styles) => ({
+    input: () => ({ width: "100%" }),
+    container: () => ({ width: "100%" }),
+    valueContainer: () => ({
       backgroundColor: "transparent",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
     }),
-    indicatorSeparator: (styles) => ({ display: "none" }),
-    dropdownIndicator: (styles) => ({ color: "black" }),
-    singleValue: (styles) => ({ top: "0", width: "50%" }),
-    menu: (styles) => ({
+    indicatorSeparator: () => ({ display: "none" }),
+    dropdownIndicator: () => ({ color: "black" }),
+    singleValue: () => ({ top: "0", width: "50%" }),
+    menu: () => ({
       width: "8rem",
       top: "2rem",
       left: "0",
@@ -44,7 +44,7 @@ const SelectPersona = () => {
       borderRadius: "2px",
       zIndex: "99",
     }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    option: (styles: any, { isFocused } :any) => {
       return {
         ...styles,
         backgroundColor: isFocused ? "black" : "white",
@@ -67,12 +67,20 @@ const SelectPersona = () => {
     // dispatch(selectPersona(e.value as string));
   };
 
+  const id: any= 1
+  const inputId: any= 1
+
   return (
     <Select
       options={options}
       onChange={selectValue}
       placeholder={"Persona"}
-      styles={colourStyles}
+      styles ={colourStyles}
+      // id={Math.random()}
+      id={id}
+			instanceId={1}
+			inputId={inputId}
+			// instanceId={Math.random()}
     />
   );
 };

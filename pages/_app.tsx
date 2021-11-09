@@ -2,6 +2,7 @@ import "../assets/SCSS/index.scss";
 import { AppLayout } from "@/layouts/app-layout";
 import type { AppProps } from "next/app";
 import { ProvideVisibility } from "@/contexts/visibilityContext";
+import { ProvideQuery } from "@/contexts/queryContext"
 
 // if (typeof window !== "undefined") {
 //   // browser code
@@ -16,11 +17,13 @@ import { ProvideVisibility } from "@/contexts/visibilityContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ProvideVisibility>
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
-    </ProvideVisibility>
+    <ProvideQuery>
+      <ProvideVisibility>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </ProvideVisibility>
+    </ProvideQuery>
   );
 }
 
